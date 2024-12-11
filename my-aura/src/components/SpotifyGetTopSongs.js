@@ -44,15 +44,97 @@ function SpotifyGetTopSongs() {
     async function getColors() {
       if (topSongs.length === 0) return;
 
+
+    // ************** DEMO *******************
+        // const topSongsDemo = [
+        //     "Cowboy Take Me Away",
+        //     "Alaska",
+        //     "Padam Padam",
+        //     "Wicked Game",
+        //     "Lebanese Blonde",
+        //     "The Consequences of Falling",
+        //     "Glory Box",
+        //     "Sunday Girl",
+        //     "Who Will Save Your Soul",
+        //     "Sweet Nothing",
+        // ]
+
+        // const topSongsDemo = [
+        //     "Lover, You Should've Come Over",
+        //     "Lilac Wine",
+        //     "Grace",
+        //     "Paper Bag",
+        //     "Forget Her",
+        //     "I Know It's Over",
+        //     "How to Disappear Completely",
+        //     "Carpe Diem - From Dead Poet's Society",
+        //     "Mojo Pin",
+        //     "I Know It's Over",
+        // ]
+
+        // const topSongsDemo = [
+        //     "Von dutch a.g. cook remix",
+        //     "Spinning (with Charli XCX and the 1975)",
+        //     "Steeeam",
+        //     "peace",
+        //     "peace",
+        //     "B2b featuring tinashe",
+        //     "It's Not Living (If It's Not With You)",
+        //     "What Is This Feeling?",
+        //     "Lucky Strike",
+        //     "Apple featuring the japanese house",
+        // ]
+
+        // const topSongsDemo = [
+        //     "9",
+        //     "Chocolate Hills",
+        //     "Night Moves",
+        //     "Ex-Factor",
+        //     "Ascension",
+        //     "Leave Her",
+        //     "RIP",
+        //     "Sweet November",
+        //     "Tomorrow Never Came",
+        //     "Drunk Dialing... LODT",
+        // ]
+
+        // const topSongsDemo = [
+        //     "Purple Rain",
+        //     "Caribbean Queen",
+        //     "Lambada",
+        //     "La Isla Bonita",
+        //     "Hey Ya!",
+        //     "Those Magic Changes",
+        //     "On the Road Again",
+        //     "Rainbow Connection",
+        //     "Only the Lonely",
+        //     "Walking On Sunshine",
+        // ]
+
+        const topSongsDemo = [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+        ]
+
+        // replace ${topSongsDemo} with ${topSongs} for Spoti.phia's top songs
+        
       const aiPrompt = `
       From these songs: ${topSongs}, generate three colors that these songs evoke. 
-      The response should be in a valid JSON format, structured as:
+      The response must be in a valid JSON format, structured as:
       {
         "color1": "#RRGGBB",
         "color2": "#RRGGBB",
         "color3": "#RRGGBB"
       }
-      Ensure that the colors are represented as valid hex color codes and look good together to convey the vibe of the songs.
+      Ensure that the colors are represented as valid hex color codes and look good together to convey the vibe of the songs. If it is not formatted correctly, it will not work. This is very important. Double check. SERIOUSLY HELLO!!! It must be formatted like above.
       `;
 
       const completion = await openai.completions.create({

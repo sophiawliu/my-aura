@@ -18,6 +18,7 @@ function SpotifyGetTopSongs() {
   const [color2, setColor2] = useState('');
   const [color3, setColor3] = useState('');
   const [topSongs, setTopSongs] = useState([]);
+  const [tsd, setTopSongsDemo] = useState([]);
 
   useEffect(() => {
     if (localStorage.getItem('accessToken')) {
@@ -98,36 +99,52 @@ function SpotifyGetTopSongs() {
         //     "Drunk Dialing... LODT",
         // ]
 
+        const topSongsDemo = [
+            "Purple Rain",
+            "Caribbean Queen",
+            "Lambada",
+            "La Isla Bonita",
+            "Hey Ya!",
+            "Those Magic Changes",
+            "On the Road Again",
+            "Rainbow Connection",
+            "Only the Lonely",
+            "Walking On Sunshine",
+        ]
+        
+
         // const topSongsDemo = [
-        //     "Purple Rain",
-        //     "Caribbean Queen",
-        //     "Lambada",
-        //     "La Isla Bonita",
-        //     "Hey Ya!",
-        //     "Those Magic Changes",
-        //     "On the Road Again",
-        //     "Rainbow Connection",
-        //     "Only the Lonely",
-        //     "Walking On Sunshine",
+        //     "",
+        //     "",
+        //     "",
+        //     "",
+        //     "",
+        //     "",
+        //     "",
+        //     "",
+        //     "",
+        //     "",
         // ]
 
-        const topSongsDemo = [
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-        ]
+        setTopSongsDemo(topSongsDemo);
+
+        // const topSongsDemo = [
+        //     "",
+        //     "",
+        //     "",
+        //     "",
+        //     "",
+        //     "",
+        //     "",
+        //     "",
+        //     "",
+        //     "",
+        // ]
 
         // replace ${topSongsDemo} with ${topSongs} for Spoti.phia's top songs
         
       const aiPrompt = `
-      From these songs: ${topSongs}, generate three colors that these songs evoke. 
+      From these songs: ${topSongsDemo}, generate three colors that these songs evoke. 
       The response must be in a valid JSON format, structured as:
       {
         "color1": "#RRGGBB",
@@ -173,7 +190,13 @@ function SpotifyGetTopSongs() {
       <div className="read-button" onClick={handleGetTopSongs}>
         Read my aura!
       </div>
-      {data?.items ? data.items.map((item, index) => <p key={index}>{item.name}</p>) : null}
+        {/* uncomment for topsongs */}
+      {/* {data?.items ? data.items.map((item, index) => <p key={index}>{item.name}</p>) : null} */}
+
+        {/* top songs demo */}
+      {tsd ? tsd.map((item, index) => <p key={index}>{item}</p>) : null}
+
+
       {data?.items && color1 && color2 && color3 ? (
         <PlaylistCover color1={color1} color2={color2} color3={color3}></PlaylistCover>
       ) : null}
